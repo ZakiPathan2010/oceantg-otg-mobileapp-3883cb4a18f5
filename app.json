@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Ocean Learning",
+    "slug": "ocean-learning",
+    "owner": "oceantechnologiesgroup",
+    "version": "1.0.1",
+    "orientation": "default",
+    "splash": {
+      "backgroundColor": "#023650"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "icon": "./assets/appstore.png",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.oceantg.oceanlearning",
+      "buildNumber": "2"
+    },
+    "android": {
+      "icon": "./assets/playstore.png",
+      "package": "com.oceantg.oceanlearning",
+      "softwareKeyboardLayoutMode": "pan",
+      "versionCode": "2",
+      "permissions": [],
+      "blockedPermissions": ["android.permission.USE_FINGERPRINT", "android.permission.USE_BIOMETRIC", "android.permission.VIBRATE", "android.permission.SYSTEM_ALERT_WINDOW"]
+    },
+    "packagerOpts": {
+      "config": "metro.config.js"
+    }
+  }
+}
