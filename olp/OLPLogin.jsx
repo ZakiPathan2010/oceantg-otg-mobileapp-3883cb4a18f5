@@ -43,6 +43,8 @@ export default function OLPLogin(company, username, password) {
               let userAccountInfo = responses[0].accountInfo;
               let configData = responses[1].configData;
 
+              console.log("BaseURL===>",baseURL)
+
               let sessionData = {
                 baseURL: baseURL,
                 USER_LOGIN_PARAMS: JSON.stringify(userLoginParams),

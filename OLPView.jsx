@@ -12,7 +12,6 @@ export default class OLPView extends Component {
   constructor(props) {
     super(props);
     this.state = {playerOpen: false};
-    console.log("OLPView Open")
   }
 
   isPlayerOpen = 
@@ -135,10 +134,26 @@ export default class OLPView extends Component {
     //TODO - cancel messages?
   }
 
+  checkLoadRequest(navigator) {
+    const url = navigator.url.toLowerCase();
+    console.log("Download URL===>",url)
+
+    // VERY naive implementation but might be all you wanted
+    /* if (url.indexOf('.pdf') > -1 || url.indexOf('.doc') > -1) {
+        // On iOS we just return false.
+        // Android requires us to call stopLoading().
+        this._webView.stopLoading();
+        return false;
+    } */
+
+    return true;
+}
+
 	render() {
 		return (
       <ContainerView>
         <WebView
+         domStorageEnabled={true}
           ref={(r) => (this.webView = r)}
           source={{ uri: `${this.props.sessionData.baseURL}OLP/home` }}
           style={{height: '100%', width: '100%', backgroundColor: "#023650"}}
@@ -162,10 +177,13 @@ export default class OLPView extends Component {
             }
           }}
           onNavigationStateChange={(newNavState) => {
+            console.log("onNavigationStateChange")
             if (newNavState.url.includes("PersonnelScreenView")) {
               const newURL = `/OLP/profile`;
               const redirectTo = 'window.location = "' + newURL + '"';
               this.webView.injectJavaScript(redirectTo);
+            }else{
+              this.checkLoadRequest
             }
           }}
           onMessage={(event) => {
@@ -190,6 +208,11 @@ export default class OLPView extends Component {
               this.props.logOut();
             }
           }}
+          allowFileAccess={true}
+          allowFileAccessFromFileURLs
+          allowUniversalAccessFromFileURLs
+          //onShouldStartLoadWithRequest={this.checkLoadRequest}
+    
         />
        {this.state.playerOpen && <FloatingCloseButton onPress={() => this.webView.injectJavaScript(this.closePlayer)}/>}
       </ContainerView>
