@@ -169,7 +169,7 @@ export default class OLPView extends Component {
             this.webView.injectJavaScript(this.isPlayerOpen);
             this.webView.injectJavaScript(this.defineClosePlayer);
             this.webView.injectJavaScript(this.hideStaLinks);
-            this.webView.injectJavaScript(this.hideDownloadButton);
+            //this.webView.injectJavaScript(this.hideDownloadButton);
             this.webView.injectJavaScript(this.hideAppFunctionality);
             this.webView.injectJavaScript(this.replaceLogoutPage);
             if (Platform.OS === 'android') {
